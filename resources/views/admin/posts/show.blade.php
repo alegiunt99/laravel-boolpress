@@ -20,6 +20,13 @@
         <!-- pulsante di modifica -->
         <a href="{{route('admin.posts.edit', $post->id)}}">Modifica</a>
 
+        <!--pulsante di cancellazione -->
+        <form action="{{ route('admin.posts.destroy', $post->id) }} " method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit">Elimina</button>
+        </form>
     </div>
     
 @endsection

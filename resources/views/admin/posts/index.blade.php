@@ -47,13 +47,13 @@
             <a href="{{ route('admin.posts.edit', $post->id)}}">Modifica</a>
 
 
-             <!--pulsante di cancellazione 
-            <form action="('admin.posts.destroy')}} ">
+             <!--pulsante di cancellazione -->
+            <form action="{{ route('admin.posts.destroy', $post->id) }} " method="POST">
                 @csrf
                 @method('DELETE')
 
                 <button type="submit">Elimina</button>
-            </form> -->
+            </form>
 
         </div>
         
