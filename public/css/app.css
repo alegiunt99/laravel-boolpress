@@ -10969,3 +10969,8 @@ a.text-dark:focus {
   padding: 20px;
 }
 
+.error {
+  color: red;
+  font-weight: 700;
+}
+

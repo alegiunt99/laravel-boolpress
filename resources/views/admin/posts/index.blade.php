@@ -16,25 +16,47 @@
 
     <div class="post-section">
 
-        <div>
-            <p><strong>Codice post: </strong>{{$post->id}}</p>
+        <div class="post-details">
+            <div>
+                <p><strong>Codice post: </strong>{{$post->id}}</p>
+            </div>
+    
+            <div>
+                <p><strong>Titolo: </strong>{{$post->title}}</p>
+            </div>
+    
+            <div>
+                <p> <strong>Contenuto: </strong>{{$post->content}}</p>
+            </div>
+    
+            <div>
+                <p>  <strong>slug: </strong>{{$post->slug}}</p>
+            </div>
+    
+            <div>
+                <p><strong>Data di creazione: </strong>{{$post->created_at}}</p>
+            </div>
         </div>
 
-        <div>
-            <p><strong>Titolo: </strong>{{$post->title}}</p>
-        </div>
+        <div class="post-buttons">
 
-        <div>
-            <p> <strong>Contenuto: </strong>{{$post->content}}</p>
-        </div>
+            <!-- pulsante di dettaglio -->
+            <a href="{{ route('admin.posts.show', $post->id)}}">Visualizza</a>
 
-        <div>
-            <p>  <strong>slug: </strong>{{$post->slug}}</p>
-        </div>
+            <!-- pulsante di modifica 
+            <a href="('admin.posts.edit')">Modifica</a>
 
-        <div>
-            <p><strong>Data di creazione: </strong>{{$post->created_at}}</p>
+
+             pulsante di cancellazione 
+            <form action="('admin.posts.destroy')}} ">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit">Elimina</button>
+            </form> -->
+
         </div>
+        
     </div>
         
         
