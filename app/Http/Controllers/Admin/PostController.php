@@ -113,6 +113,10 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::find($id);
+
+        return view('admin.posts.edit', compact('post'));
+    
     }
 
     /**
@@ -125,6 +129,50 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+
+            'title' => 'required|max:250',
+
+            'content' => 'required'
+
+        ],
+        
+        // si modificano i messaggi di errore
+        [
+            'title.required' => 'Non hai scritto niente',
+
+            'title.max' => 'Puoi scrivere un massimo di 250 caratteri',
+
+            'content.required' => 'Non hai scritto niente',
+        ]
+        );
+
+        $postData = $request->all();
+
+        $post = Post::find($id);
+
+        $post->fill($postData);
+
+        $slug = Str::slug($post->title);
+
+        $alternativeSlug = $slug;
+
+        $postFound = Post::where('slug', $alternativeSlug)->first();
+
+        $counter = 1;
+
+        while($postFound){
+
+            $alternativeSlug = $slug . '_' . $counter;
+            $counter++;
+            $postFound = Post::where('slug', $alternativeSlug)->first();
+        }
+
+        $post->slug = $alternativeSlug;
+
+        $post->update();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**

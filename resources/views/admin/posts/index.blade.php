@@ -43,11 +43,11 @@
             <!-- pulsante di dettaglio -->
             <a href="{{ route('admin.posts.show', $post->id)}}">Visualizza</a>
 
-            <!-- pulsante di modifica 
-            <a href="('admin.posts.edit')">Modifica</a>
+            <!-- pulsante di modifica -->
+            <a href="{{ route('admin.posts.edit', $post->id)}}">Modifica</a>
 
 
-             pulsante di cancellazione 
+             <!--pulsante di cancellazione 
             <form action="('admin.posts.destroy')}} ">
                 @csrf
                 @method('DELETE')

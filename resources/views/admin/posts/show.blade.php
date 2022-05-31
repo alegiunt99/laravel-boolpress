@@ -17,6 +17,9 @@
         <!-- pulsante di ritorno alla pagina precedente -->
         <a href="{{ route('admin.posts.index')}}">Back</a>
 
+        <!-- pulsante di modifica -->
+        <a href="{{route('admin.posts.edit', $post->id)}}">Modifica</a>
+
     </div>
     
 @endsection
