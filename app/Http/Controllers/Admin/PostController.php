@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Post;
 
+use Illuminate\Support\Str;
+
 class PostController extends Controller
 {
     /**
@@ -48,7 +50,17 @@ class PostController extends Controller
 
             'content' => 'required'
 
-        ]);
+        ],
+        
+        // si modificano i messaggi di errore
+        [
+            'title.required' => 'Non hai scritto niente',
+
+            'title.max' => 'Puoi scrivere un massimo di 250 caratteri',
+
+            'content.required' => 'Non hai scritto niente',
+        ]
+        );
 
         $postData = $request->all();
 

@@ -10962,3 +10962,10 @@ a.text-dark:focus {
   }
 }
 
+.post-section {
+  border: 1px solid gray;
+  margin: 20px 0;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
