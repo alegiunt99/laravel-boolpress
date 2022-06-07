@@ -20,7 +20,22 @@
             <input type="text" name="content" value="{{ $post->content }}">
 
         </div>
-        
+
+        <!-- categorie del post -->
+        <div class="categories-check">
+            <label>Categoria: </label><br>
+            <select name="category_id">
+
+                <option value="">Scegli categoria</option>
+
+                @foreach ($categories as $category)
+
+                    <option value="{{$category->id}}" {{ $category->id == old('category_id', $post->category_id) ? 'selected' : ''}}>{{$category->name}}</option>
+                    
+                @endforeach
+
+            </select>
+        </div>
 
         <input type="submit" value="Invia">
     </form>

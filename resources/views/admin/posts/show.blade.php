@@ -10,7 +10,9 @@
 
         <p>{{$post->content}}</p>
         
+        <p><strong> <em>#{{ $categories->name}}</em> </strong></p>
     </div>
+
 
     <div class="buttons">
 

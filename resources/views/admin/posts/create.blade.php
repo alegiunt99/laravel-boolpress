@@ -35,7 +35,7 @@
             @enderror
         </div>
 
-        <!-- contenuto del post -->
+        <!-- categorie del post -->
         <div class="categories-check">
             <label>Categoria: </label><br>
             <select name="category_id">

@@ -104,7 +104,9 @@ class PostController extends Controller
         //
         $post = Post::find($id);
 
-        return view('admin.posts.show', compact('post'));
+        $categories = Category::find($post->category_id);
+
+        return view('admin.posts.show', compact('post', 'categories'));
 
     }
 
@@ -119,7 +121,9 @@ class PostController extends Controller
         //
         $post = Post::find($id);
 
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     
     }
 
