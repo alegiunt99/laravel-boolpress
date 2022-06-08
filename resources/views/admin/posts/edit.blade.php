@@ -37,6 +37,24 @@
             </select>
         </div>
 
+            <!-- tags del post -->
+            <div class="tags">  
+                <label> Tags </label>
+
+                @foreach ($tags as $tag)
+
+                    <div class="tag-box">
+
+                        <input type="checkbox" value="{{ $tag->id }}" name="tags[]" 
+                            {{ $post->tags->contains($tag) ? 'checked' : ''}}>
+
+                        <span>{{ $tag->name }}</span>
+
+                    </div>
+                    
+                    
+                @endforeach
+            </div>
         <input type="submit" value="Invia">
     </form>
 

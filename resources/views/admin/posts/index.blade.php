@@ -26,10 +26,6 @@
             </div>
     
             <div>
-                <p> <strong>Contenuto: </strong>{{$post->content}}</p>
-            </div>
-    
-            <div>
                 <p>  <strong>slug: </strong>{{$post->slug}}</p>
             </div>
     

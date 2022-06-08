@@ -10,7 +10,12 @@
 
         <p>{{$post->content}}</p>
         
-        <p><strong> <em>#{{ $categories->name}}</em> </strong></p>
+        <p>{{ $categories->name}}</p>
+
+        @foreach ($post->tags as $tag)
+            <span><strong> <em>#{{ $tag->name}}</em> </strong></span>
+        @endforeach
+        
     </div>
 
 

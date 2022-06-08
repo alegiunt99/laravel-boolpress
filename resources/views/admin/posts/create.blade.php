@@ -29,7 +29,7 @@
         <!-- contenuto del post -->
         <div class="input">
             <label for="content">Testo: </label><br>
-            <input type="text" name="content">
+            <textarea type="text" name="content"></textarea>
             @error('content')
                 <p class="error">{{$message}}</p>
             @enderror
@@ -49,6 +49,26 @@
                 @endforeach
 
             </select>
+            
+        </div>
+
+        <!-- tags del post -->
+        <div class="tags">  
+            <label> Tags </label>
+
+            @foreach ($tags as $tag)
+
+                <div class="tag-box">
+
+                    <input type="checkbox" value="{{ $tag->id }}" name="tags[]" 
+                        {{ in_array($tag->id, old('tags', []))  ? 'checked' : ''}}>
+
+                    <span>{{ $tag->name }}</span>
+
+                </div>
+                
+                
+            @endforeach
             
         </div>
 
