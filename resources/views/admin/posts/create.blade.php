@@ -49,7 +49,9 @@
                 @endforeach
 
             </select>
-            
+            @error('category_id')
+                <p class="error">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- tags del post -->
@@ -67,6 +69,9 @@
 
                 </div>
                 
+                @error('tags[]')
+                    <p class="error">{{$message}}</p>
+                @enderror
                 
             @endforeach
             

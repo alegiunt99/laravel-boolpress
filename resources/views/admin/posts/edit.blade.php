@@ -12,6 +12,10 @@
             <label for="title">Title: </label><br>
             <input type="text" name="title" value="{{ $post->title }}">
 
+            @error('title')
+                <p class="error">{{$message}}</p>
+            @enderror
+
         </div>
         
         <div class="input">
@@ -19,6 +23,9 @@
             <label for="content">Content: </label><br>
             <input type="text" name="content" value="{{ $post->content }}">
 
+            @error('content')
+                <p class="error">{{$message}}</p>
+            @enderror
         </div>
 
         <!-- categorie del post -->
@@ -34,6 +41,10 @@
                     
                 @endforeach
 
+
+                @error('category_id')
+                    <p class="error">{{$message}}</p>
+                @enderror
             </select>
         </div>
 
@@ -42,12 +53,21 @@
                 <label> Tags </label>
 
                 @foreach ($tags as $tag)
-
                     <div class="tag-box">
 
-                        <input type="checkbox" value="{{ $tag->id }}" name="tags[]" 
+                        @if ($errors->any())
+
+                            <input type="checkbox" value="{{ $tag->id }}" name="tags[]" 
+                            {{ in_array($tag->id, old('tags', []))  ? 'checked' : ''}}>
+
+
+                        @else
+                            
+                            <input type="checkbox" value="{{ $tag->id }}" name="tags[]" 
                             {{ $post->tags->contains($tag) ? 'checked' : ''}}>
 
+                        @endif
+                    
                         <span>{{ $tag->name }}</span>
 
                     </div>

@@ -189,7 +189,7 @@ class PostController extends Controller
 
         $post->slug = $alternativeSlug;
 
-        
+        $post->tags()->sync($postData['tags']);
 
         $post->update();
 
