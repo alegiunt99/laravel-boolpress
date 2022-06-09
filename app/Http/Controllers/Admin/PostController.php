@@ -11,6 +11,8 @@ use App\Category;
 
 use App\Tag;
 
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -72,10 +74,18 @@ class PostController extends Controller
 
         $postData = $request->all();
 
+        if(array_key_exists('post-image', $postData)){
+
+            $img_path = Storage::put('uploads', $postData['post-image']);
+
+        }   
+        
         $newPost = new Post();
 
-        $newPost->fill($postData);
+        $newPost->cover = $img_path;
 
+        $newPost->fill($postData);
+        
         $slug = Str::slug($newPost->title);
 
         $alternativeSlug = $slug;
@@ -96,8 +106,6 @@ class PostController extends Controller
         $newPost->save();
 
         $newPost->tags()->sync($postData['tags']);
-
-        $newPost->save();
 
         return redirect()->route('admin.posts.index');
     }
@@ -170,6 +178,20 @@ class PostController extends Controller
 
         $post = Post::find($id);
 
+        if(array_key_exists('post-image', $postData)){
+
+            if($post->cover){
+
+                Storage::delete($post->cover);
+
+            }
+
+            $img_path = Storage::put('uploads', $postData['post-image']);
+
+        }   
+
+        $post->cover = $img_path;
+
         $post->fill($postData);
 
         $slug = Str::slug($post->title);
@@ -206,7 +228,15 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
-        $post->delete();
+
+        if($post){
+
+            $post->tags()->sync([]);
+
+            $post->delete();
+
+        }
+        
         return redirect()->route('admin.posts.index');
     }
 }

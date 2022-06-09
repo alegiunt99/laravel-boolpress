@@ -14,9 +14,9 @@ class AddCoverPostsTable extends Migration
     public function up()
     {
         //
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
 
-            $table->string('cover')->nullable()->after('slug');
+            $table->string('cover')->nullable();
             
         });
 
@@ -30,7 +30,7 @@ class AddCoverPostsTable extends Migration
     public function down()
     {
         //
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
 
             $table->dropColumn('cover');
             

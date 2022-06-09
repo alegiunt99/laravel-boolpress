@@ -14,7 +14,7 @@
             <p class="error">Attenzione! {{$error}}</p>
         @endforeach
     @endif
-    <form action="{{ route('admin.posts.store')}}" method="POST">
+    <form action="{{ route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <!-- titolo del post -->
@@ -26,6 +26,14 @@
             @enderror
         </div>
         
+        <!-- immagine del post -->
+        <div class="input">
+            <label for="post-image">Aggiungi un titolo: </label><br>
+            <input type="file" name="post-image" />
+        </div>
+        
+
+
         <!-- contenuto del post -->
         <div class="input">
             <label for="content">Testo: </label><br>

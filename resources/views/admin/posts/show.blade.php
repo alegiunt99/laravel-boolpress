@@ -6,7 +6,14 @@
 
     <div class="content">
 
+        <div class="image-post">
+
+            <img src="{{ asset('storage/' . $post->cover) }}">
+
+        </div>
+
         <h1>{{$post->title}}</h1>
+
 
         <p>{{$post->content}}</p>
         

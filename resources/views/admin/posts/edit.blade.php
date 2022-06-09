@@ -3,10 +3,11 @@
 <!-- Form di modifica --> 
 @section('content')
 
-    <form action="{{ route('admin.posts.update', ['post' => $post->id])}}" method="POST">
+    <form action="{{ route('admin.posts.update', ['post' => $post->id])}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
+        <!-- titolo del post -->
         <div class="input">
 
             <label for="title">Title: </label><br>
@@ -17,7 +18,21 @@
             @enderror
 
         </div>
+
+        <!-- immagine del post -->
+        <div class="input">
+
+            <div class="image-post">
+
+                <img src="{{ asset('storage/' . $post->cover) }}">
+    
+            </div>
+
+            <label for="post-image">Aggiungi un titolo: </label><br>
+            <input type="file" name="post-image" />
+        </div>
         
+        <!-- contenuto del post -->
         <div class="input">
 
             <label for="content">Content: </label><br>
