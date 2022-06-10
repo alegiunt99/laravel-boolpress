@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    name: 'AppComponent',
+    name: 'App',
 }
 </script>
 
