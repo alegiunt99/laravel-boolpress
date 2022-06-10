@@ -1,9 +1,5 @@
 <template>
-  <div>
-      <h1>
-          AppCopmonent funonzia
-      </h1>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
